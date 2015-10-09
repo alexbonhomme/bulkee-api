@@ -1,0 +1,31 @@
+{
+	"newUser" : {
+			"_id": "54c3d3042068d4f479fddf4d",
+			"email" : "bnj",
+			"password" : "bnj",
+			"birthdate": null,
+			"role": "user",
+			"email": "bnj",
+			"firstName": "test",
+			"lastName": ""
+		},
+	"userSignup" : {
+			"email" : "benjamin",
+			"password" : "benjamin"
+		},
+	"login" : {
+			"email" : "bnj",
+			"password" : "bnj"
+		},
+	"userLogin" : {
+		"_id": "54c3d3042068d4f479fddf4d",
+		"birthDate": "",
+		"salt": "479743246834",
+		"hashed_password": "92bd18913bbce6aac02556b0f5a4720365e78081",
+		"birthdate": null,
+		"role": "user",
+		"email": "bnj",
+		"firstName": "test",
+		"lastName": "",
+		"__v": 25}
+}

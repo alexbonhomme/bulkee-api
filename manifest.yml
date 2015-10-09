@@ -1,0 +1,7 @@
+applications:
+- name: genae-api-dev
+  host: genae-api-dev
+  command: node server.js
+  memory: 256M
+  env:
+    NODE_ENV: production

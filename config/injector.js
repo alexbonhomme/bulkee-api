@@ -18,6 +18,7 @@ var load = function (config) {
     _: ['value', require('lodash')],
     assert: ['value', require('assert')],
     fieldsValidator: ['value', require('fieldsValidator')],
+    distance: require('gps-distance')
     // queue: ['value', require('./kue')]
   };
 

@@ -20,6 +20,11 @@ module.exports = {
     index: 'dev_staging_v1.0',
     alias: 'node-base'
   },
+  push: {
+    url: 'https://push.ionic.io/api/v1/push',
+    private_key: '',
+    app_id: '13caf6a7'
+  },
   apiKey: {
     keenProjectId: '54dca8bf96773d3d2f43b6f8',
     keenWriteKey: '388c5a569439ea92318051b1c70e7dd2fa5c5768a349d456613cb3c5b354c961' + 

@@ -4,7 +4,7 @@ module.exports = {
     url: 'mongodb://admin:admin@ds027908.mongolab.com:27908/bulkee-dev'
   },
   server: {
-    port: process.env.VCAP_APP_PORT || process.env.PORT,
+    port: process.env.PORT || 3000,
     url: 'http://localhost:3000',
     basePath: '/api/v1.0'
   },

@@ -6,11 +6,11 @@ var Schema = mongoose.Schema;
 
 
 var UserSchema = new Schema({
-  lastName: {
+  lastname: {
     type: String,
     default: ''
   },
-  firstName: {
+  firstname: {
     type: String,
     default: ''
   },
@@ -23,6 +23,27 @@ var UserSchema = new Schema({
   birthdate: {
     type: Date,
     default: ''
+  },
+  alerts: [{
+    category: {
+      id: {
+        type: Number
+      },
+      name: {
+        type: String
+      }
+    },
+    distance: {
+      type: Number,
+      default: 1000
+    },
+    position: {
+      type: [Number, Number],
+      index: '2d'
+    }
+  }],
+  device_token: {
+    type: String
   },
   hashed_password: {
     type: String,

@@ -81,17 +81,13 @@ BulkySchema.post('save', function(doc) {
   
   Users.findAsync()
     .then(function (users) {
-      console.log('users :', users);
       _.forEach(users, function (user) {
-        _.forEach(user.alerts, function (alert) {
-          if (distance(parseFloat(doc.position[0]), parseFloat(doc.position[1]), alert.position[0], alert.position[1]) <= alert.distance) {
-            console.log('ici : ', distance(parseFloat(doc.position[0]), parseFloat(doc.position[1]), alert.position[0], alert.position[1]));
-            //sendPush(user.deviceToken, doc._id);
-            tokens.push(user.device_token);
-          }
-        });
+        // if (distance(parseFloat(doc.position[0]), parseFloat(doc.position[1]), user.alerts.position[0], user.alerts.position[1]) <= user.alerts.distance) {
+        //   console.log('ici : ', distance(parseFloat(doc.position[0]), parseFloat(doc.position[1]), user.alerts.position[0], user.alerts.position[1]));
+        //   tokens.push(user.device_token);
+        // }
+        tokens.push(user.device_token);
       });
-      console.log('tokens length : ', tokens.length);
       if (tokens.length) {
         sendPush(_.uniq(tokens), doc._id);
       }
@@ -105,11 +101,10 @@ function sendPush(devicetoken, bulkyId) {
     'X-Ionic-Application-Id': config.push.app_id,
     Authorization: 'Basic ' + new Buffer(config.push.private_key + ':').toString('base64')
   };
-  console.log('headers : ', headers);
 
   var data = {
-    tokens: ['Your', 'device', 'tokens'],
-    production: true,
+    tokens: ['DEV-ef91c15f-9ba6-421d-b67d-b53f366951fa', 'DEV-47af8a02-ea16-46c0-8414-c54c5bceb501'],
+    // production: true,
     notification: {
       alert:'Un objet dans le coin risque de t\'intéresser'
     }
@@ -117,7 +112,7 @@ function sendPush(devicetoken, bulkyId) {
 
   console.log('iciiii');
 
-  request.post({url: config.push.url, headers: headers, form: data}, function (err, resp) {
+  request.post({url: config.push.url, headers: headers, data: data}, function (err, resp) {
     if (err) {
       console.log('err', err);
       return ;

@@ -24,15 +24,15 @@ var UserSchema = new Schema({
     type: Date,
     default: ''
   },
-  alerts: [{
-    category: {
+  alerts: {
+    categories: [{
       id: {
         type: Number
       },
       name: {
         type: String
       }
-    },
+    }],
     distance: {
       type: Number,
       default: 1000
@@ -41,7 +41,7 @@ var UserSchema = new Schema({
       type: [Number, Number],
       index: '2d'
     }
-  }],
+  },
   device_token: {
     type: String
   },

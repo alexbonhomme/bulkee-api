@@ -4,8 +4,8 @@ module.exports = function(router, Users, fieldsValidator) {
 
   router.get('/', getAll);
   router.get('/:id', getOne);
-  router.post('/:id/alerts/:categoryId/:categoryName', addAlert);
-  router.delete('/:id/alerts/:alertId', removeAlert);
+  router.post('/:id/alerts', addAlert);
+  router.delete('/:id/alerts', removeAlert);
 
   function getAll(req, res) {
     return res.json(Users.findAsync());
@@ -26,21 +26,14 @@ module.exports = function(router, Users, fieldsValidator) {
     Users.findAsync({_id: req.params.id})
       .spread(function (user) {
         if (!user) {
-          return res.status(400).json({message: 'User does\'t exist'});
+          return res.status(400).json({message: 'User doesn\'t exist'});
         }
 
-        if (!user.alerts) {
-          user.alerts = [];
-        }
-
-        user.alerts.push({
+        user.alerts = {
           position: req.body.position,
           distance: parseInt(req.body.distance, 10),
-          category: {
-            name: req.params.categoryName,
-            id: req.params.categoryId
-          }
-        });
+          categories: req.body.categories
+        };
 
         return user.saveAsync();
       })
@@ -56,12 +49,12 @@ module.exports = function(router, Users, fieldsValidator) {
     Users.findAsync({_id: req.params.id})
       .spread(function (user) {
         if (!user) {
-          return res.status(400).json({message: 'User does\'t exist'});
-        } else if (!user.alerts || !user.alerts.length) {
+          return res.status(400).json({message: 'User doesn\'t exist'});
+        } else if (!user.alerts) {
           return res.status(400).json({message: 'User doesn\'t have alerts'});
         }
 
-        user.alerts.splice(req.params.alertId, 1);
+        user.alerts.categories = {};
 
         return user.saveAsync();
       })

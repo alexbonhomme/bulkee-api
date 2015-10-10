@@ -9,7 +9,10 @@ module.exports = function(router, Bulkies, fieldsValidator) {
   router.delete('/:id', deleteOne);
 
   function getAll(req, res) {
-    return res.json(Bulkies.findAsync());
+    return Bulkies.findAsync()
+      .then(function (bulkies) {
+        return res.json(bulkies);
+      });
   }
 
   function getOne(req, res) {

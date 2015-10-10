@@ -22,7 +22,7 @@ module.exports = {
   },
   push: {
     url: 'https://push.ionic.io/api/v1/push',
-    private_key: '',
+    private_key: '9d4b73d2e907cc0aa06311c608fecb27c5157721227e92c2',
     app_id: '13caf6a7'
   },
   apiKey: {

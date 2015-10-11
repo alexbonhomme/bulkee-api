@@ -8,7 +8,7 @@ var httpserver;
 
 
 if (require.main === module) {
-    httpserver = app.listen(port, function() {
+    httpserver = app.listen(port,app.get('ip'), function() {
     	console.log('Server ' + config.name + ' is running');
         console.log('NODE_ENV variable on server is ' + process.env.NODE_ENV);
         console.log('Express server run at http://localhost:' + port + '/');

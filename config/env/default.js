@@ -4,6 +4,7 @@ module.exports = {
   name: 'bulkee-api',
   server: {
     port: process.env.PORT || 3000,
+    ip: process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     url: 'http://localhost:' + (process.env.PORT || 3000),
     basePath: '/api/v1.0'
   },

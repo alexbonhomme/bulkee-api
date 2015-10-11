@@ -4,7 +4,8 @@ module.exports = {
     url: 'mongodb://admin:admin@ds027908.mongolab.com:27908/bulkee-dev'
   },
   server: {
-    port: process.env.PORT || 3000,
+    port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000,
+    ip: process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     url: 'http://localhost:3000',
     basePath: '/api/v1.0'
   },

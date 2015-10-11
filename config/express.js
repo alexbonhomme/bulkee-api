@@ -74,6 +74,7 @@ module.exports = function (config) {
 
   // Start the server
   app.set('port', port);
+  app.set('ip', config.server.ip);
 
   return app;
 };

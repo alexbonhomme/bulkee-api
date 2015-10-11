@@ -104,6 +104,7 @@ function sendPush(devicetoken, bulkyId) {
 
   var data = {
     tokens: ['DEV-ef91c15f-9ba6-421d-b67d-b53f366951fa', 'DEV-47af8a02-ea16-46c0-8414-c54c5bceb501'],
+    user_ids: [],
     // production: true,
     notification: {
       alert:'Un objet dans le coin risque de t\'intéresser'
